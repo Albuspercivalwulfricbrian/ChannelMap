@@ -21,8 +21,9 @@ int main()
     json ChannelInfo;
 
     fstream inFile;
-    inFile.open("/home/doc/afiadc/ChannelMap/ChannelMap.txt");
-    std::ofstream o("/home/doc/afiadc/ChannelMap/pretty.json");
+    string path = "/home/doc/afiadc/ChannelMap/ChannelMapGenerator/";
+    inFile.open(path+"ChannelMap.txt");
+    std::ofstream o(path+"ChannelMap.json");
 
     string line;
     while(getline(inFile, line))
