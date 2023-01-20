@@ -18,12 +18,3 @@ add_executable(ChannelMap
 )
 target_link_libraries(ChannelMap PUBLIC Qt5::Widgets Qt5::Core)
 target_include_directories(ChannelMap PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
-# add_executable(ChannelMapGenerator
-#   ChannelMapGenerator.cpp
-#   ${HEADERS}
-#   ${SOURCES}
-# )
-
-
-# qt5_create_translation(QM_FILES ${CMAKE_SOURCE_DIR} ${TS_FILES})

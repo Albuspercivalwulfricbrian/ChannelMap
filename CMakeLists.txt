@@ -15,3 +15,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt5 COMPONENTS Widgets Core REQUIRED)
 
 add_subdirectory(ChannelMap)
+add_subdirectory(ChannelMapGenerator)
