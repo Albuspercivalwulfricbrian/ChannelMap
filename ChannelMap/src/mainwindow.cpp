@@ -6,7 +6,6 @@
 #include "json.hpp"
 #include "sstream"
 #include "ui_mainwindow.h"
-#include "vector"
 #include "QFileDialog"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -47,7 +46,6 @@ void MainWindow::on_connectorTable_cellClicked(int row, int column) {
     QTableWidgetItem *widItem = new QTableWidgetItem;
     widItem->setData(Qt::EditRole, chMap->chconfig->v[column][row][i + 1]);
     ui->channelTable->setItem(0, i, widItem);
-    //        cout << chMap->chconfig->v[column][row][i] << endl;
   }
 }
 
@@ -60,9 +58,7 @@ void MainWindow::on_SetConfigButton_clicked() {
     return;
   }
   chMap->ReadConfig(json::parse(iFile));
-  cout << " shit" << endl;
 
-  // cout << saveMap->fileName.toStdString();
   ui->connectorTable->setColumnCount(chMap->GetX1Size());
   ui->connectorTable->setRowCount(chMap->GetX2Size());
   ui->channelTable->setColumnCount(chMap->GetX3Size());
@@ -81,12 +77,10 @@ void MainWindow::on_SetConfigButton_clicked() {
 void MainWindow::on_connectorTable_cellChanged(int row, int column) {
   chMap->chconfig->v[column][row][0] =
       stoi(ui->connectorTable->item(row, column)->text().toStdString());
-  //    cout << chMap->chconfig->v[column][row][0] << endl;
 }
 
 void MainWindow::on_channelTable_cellChanged(int row, int column) {
-  // cout << current_column << " click " << current_row << " clack "<<column <<
-  // endl;
+
   chMap->chconfig->v[current_column][current_row][column + 1] =
       stoi(ui->channelTable->item(row, column)->text().toStdString());
 }
@@ -97,8 +91,6 @@ void MainWindow::on_LengthSpinBox_valueChanged(int arg1) {
 
 void MainWindow::on_SetSaveButton_clicked() {
 
-  //    saveMap = new SaveMap(nullptr);
-  //    saveMap->show();
   std::ofstream o(fileName.toStdString());
 
   o << std::setw(4) << chMap->SaveConfig() << std::endl;

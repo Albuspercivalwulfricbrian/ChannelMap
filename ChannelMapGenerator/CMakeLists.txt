@@ -8,6 +8,7 @@ add_executable(ChannelMapGenerator
   main.cpp
   ${HEADERS}
 )
-
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/ChannelMap.txt
+        DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 target_include_directories(ChannelMapGenerator PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 

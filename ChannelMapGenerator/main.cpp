@@ -4,7 +4,7 @@
 #include "vector"
 #include "sstream"
 #include "iomanip"
-
+#include "filesystem"
 // #include "string"
 // #include "string_view"
 // #include "format"
@@ -14,14 +14,15 @@
 using json = nlohmann::json;
 
 using namespace std;
-int main()
+int main(int argc, char *argv[])
 {
     json ChannelMap;
     json ChannelInfoArray;
     json ChannelInfo;
 
     fstream inFile;
-    string path = "/home/doc/afiadc/ChannelMap/ChannelMapGenerator/";
+    string path = std::filesystem::path{argv[0]}.parent_path()/"";
+    cout << path << endl;
     inFile.open(path+"ChannelMap.txt");
     std::ofstream o(path+"ChannelMap.json");
 
@@ -48,7 +49,6 @@ int main()
             ChannelInfoArray[std::to_string(number)] = ChannelInfo;
 
         }
-        //cout << << std::setw(4) << ChannelMap << std::endl;
     }
     ChannelMap["channels"] = ChannelInfoArray;
     o << std::setw(4) << ChannelMap << std::endl;

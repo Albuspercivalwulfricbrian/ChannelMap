@@ -50,7 +50,6 @@ public:
       if (chconfig->v[x][y][0] == 0)
         chconfig->v[x][y][0] = val["connector"];
       chconfig->v[x][y][z] = stoi(key);
-      cout << x << y << z << endl;
     }
   }
 
